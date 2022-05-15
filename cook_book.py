@@ -16,7 +16,7 @@ def create_cook_book(file_recept):
     return cooking_book
 
 
-def get_shop_list_by_dishes(dishes, person_count):
+def get_shop_list_by_dishes(dishes, person_count, cook_book):
     list_ingr = {}
     for dish in dishes:
         if dish in cook_book:
