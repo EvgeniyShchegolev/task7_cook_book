@@ -1,4 +1,8 @@
 def create_cook_book(file_recept):
+    """
+    Функция принимает переменную после прочтения с файла txt и
+    возвращает отформатированные данные ввиде словаря с вложениями
+    """
     cooking_book = {}
     for line in file_recept:
         name_dish = line.strip()
@@ -14,18 +18,3 @@ def create_cook_book(file_recept):
         cooking_book[name_dish] = ingredients
         file_recept.readline()
     return cooking_book
-
-
-def get_shop_list_by_dishes(dishes, person_count, cook_book):
-    list_ingr = {}
-    for dish in dishes:
-        if dish in cook_book:
-            for ingr in cook_book[dish]:
-                ingr_name = ingr["ingredient_name"]
-                if ingr_name not in list_ingr:
-                    list_ingr[ingr_name] = {"measure": ingr["measure"], "quantity": ingr["quantity"] * person_count}
-                else:
-                    list_ingr[ingr_name]["quantity"] += ingr["quantity"] * person_count
-        else:
-            print(f'Ошибка ввода данных: блюда "{dish}" нет в кулинарной книге!')
-    return list_ingr
